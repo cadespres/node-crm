@@ -12,6 +12,19 @@ app.use(cors(corsOptions));
 app.use(express.json());
 // parse requests of content-type - application/x-www-form-urlencoded
 app.use(express.urlencoded({ extended: true }));
+
+// postgres connection
+const db = require("./app/models");
+db.sequelize.sync()
+    .then(() => {
+        console.log("Synced db.");
+    })
+    .catch((err) => {
+        console.log("Failed to sync db: " + err.message);
+    });
+
+
+
 // simple route
 app.get("/", (req, res) => {
     res.json({ message: "Welcome to node-crm app." });
