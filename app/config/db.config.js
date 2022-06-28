@@ -2,7 +2,7 @@ module.exports = {
     HOST: "localhost",
     USER: "postgres",
     PASSWORD: "dbadmin",
-    DB: "crm",
+    DB: "sequelize_tutorial",
     dialect: "postgres",
     pool: {
         max: 5,

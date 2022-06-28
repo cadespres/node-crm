@@ -1,5 +1,6 @@
 const express = require("express");
 const bodyParser = require("body-parser");
+const userController = require('./app/controllers/userController')
 const cors = require("cors");
 const app = express();
 var corsOptions = {
@@ -29,6 +30,14 @@ db.sequelize.sync()
 app.get("/", (req, res) => {
     res.json({ message: "Welcome to node-crm app." });
 });
+
+app.post("/users", (req, res) => {
+
+    userController.create(req, res);
+
+    res.json({ message: "User saved" });
+});
+
 // set port, listen for requests
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
